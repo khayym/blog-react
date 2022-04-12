@@ -18,7 +18,6 @@ export const CustomHeader: React.FC<IHeader> = ({ children }) => {
       height={
         210 - Math.round(scroll.y) >= 80 ? 210 - Math.round(scroll.y) : 80
       }
-      // p="xs"
     >
       <div className="div-container">
         <Burger
