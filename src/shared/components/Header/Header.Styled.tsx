@@ -2,7 +2,6 @@ import { Header } from '@mantine/core';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled(Header)`
-  @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
   border-bottom: 0px solid transparent;
   width: 100%;
   transition: all 0.1s;
