@@ -4,7 +4,19 @@ import CustomCard from '../../shared/components/Card/Normal/';
 import TrendCard from '../../shared/components/Card/Trend';
 import { Feed, HomeStyledContainer, TrendBox } from './Home.Styled';
 
-export const Home = () => {
+interface IPosts {
+  posts?: string[];
+}
+
+type Idata = {
+  id?: number;
+  date?: string;
+  title?: string;
+  imgUrl?: string;
+  category?: string;
+  body?: string;
+};
+export const Home = ({ posts }: IPosts) => {
   return (
     <HomeStyledContainer>
       <TrendBox columns={24} gutter={30}>
@@ -28,9 +40,12 @@ export const Home = () => {
       </TrendBox>
       <Divider my="sm" />
       <Feed gutter="xl">
-        <Grid.Col xl={4} lg={4} md={4} sm={4}>
-          <CustomCard />
-        </Grid.Col>
+        {posts?.map((item: any) => (
+          <Grid.Col xl={4} lg={4} md={4} sm={4} key={item?.id}>
+            <CustomCard />
+          </Grid.Col>
+        ))}
+
         <Grid.Col xl={4} lg={4} md={4} sm={4}>
           <CustomCard />
         </Grid.Col>

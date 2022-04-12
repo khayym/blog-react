@@ -1,10 +1,22 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Home from '../../feature/home';
 
 const HomePage: React.FC = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios('https://bloggy-api.herokuapp.com/posts');
+      setPosts(data);
+    };
+
+    getData();
+  }, []);
+
   return (
     <>
-      <Home />
+      <Home posts={posts} />
     </>
   );
 };
