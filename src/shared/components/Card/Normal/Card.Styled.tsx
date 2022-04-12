@@ -1,13 +1,11 @@
 import { ReactChild, ReactChildren } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface ICard {
-  to: string;
   children?: ReactChild | ReactChild[] | ReactChildren | ReactChildren[];
 }
 
-export const CardContainer = styled(Link)<ICard>`
+export const CardContainer = styled.div<ICard>`
   text-decoration: none;
   .card-img {
     border-radius: 8px;

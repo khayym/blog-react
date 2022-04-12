@@ -8,14 +8,6 @@ interface IPosts {
   posts?: string[];
 }
 
-type Idata = {
-  id?: number;
-  date?: string;
-  title?: string;
-  imgUrl?: string;
-  category?: string;
-  body?: string;
-};
 export const Home = ({ posts }: IPosts) => {
   return (
     <HomeStyledContainer>
