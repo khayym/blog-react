@@ -10,10 +10,14 @@ import {
 } from '@mantine/core';
 import axios from 'axios';
 import { showNotification } from '@mantine/notifications';
+import { useAppDispatch } from '../../../hooks/redux';
+import { fillPosts } from '../../../store/slices/post/postSlices';
 
 export const ModalContent = () => {
   const category = ['aa', 'sss', 'asdasd'];
   const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
+
   const form = useForm({
     initialValues: {
       title: '',
@@ -27,6 +31,8 @@ export const ModalContent = () => {
   const postData = async (values: any) => {
     setLoading(true);
     await axios.post('https://bloggy-api.herokuapp.com/posts', values);
+    const { data } = await axios('https://bloggy-api.herokuapp.com/posts');
+    dispatch(fillPosts(data));
     setLoading(false);
     form.reset();
     showNotification({
@@ -34,7 +40,6 @@ export const ModalContent = () => {
       message: 'Blog added successfully'
     });
   };
-
   return (
     <ModalContentStyled>
       <LoadingOverlay visible={loading} />

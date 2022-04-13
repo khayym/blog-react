@@ -1,22 +1,23 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Home from '../../feature/home';
+import { useAppDispatch } from '../../hooks/redux';
+import { fillPosts } from '../../store/slices/post/postSlices';
 
 const HomePage: React.FC = () => {
-  const [posts, setPosts] = useState([]);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios('https://bloggy-api.herokuapp.com/posts');
-      setPosts(data);
+      dispatch(fillPosts(data));
     };
-
     getData();
   }, []);
 
   return (
     <>
-      <Home posts={posts} />
+      <Home />
     </>
   );
 };
