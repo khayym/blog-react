@@ -26,10 +26,7 @@ export const ModalContent = () => {
 
   const postData = async (values: any) => {
     setLoading(true);
-    const postedData = await axios.post(
-      'https://bloggy-api.herokuapp.com/posts',
-      values
-    );
+    await axios.post('https://bloggy-api.herokuapp.com/posts', values);
     setLoading(false);
     form.reset();
     showNotification({

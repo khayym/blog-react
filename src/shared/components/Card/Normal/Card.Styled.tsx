@@ -38,6 +38,7 @@ export const CardContainer = styled.div<ICard>`
     font-weight: 700;
     letter-spacing: -0.4px;
     color: ${({ theme }) => theme.colors.black};
+    overflow-wrap: anywhere;
   }
 
   .card-con {
@@ -72,6 +73,27 @@ export const CardContainer = styled.div<ICard>`
       font-weight: 500;
       letter-spacing: 1px;
       text-transform: uppercase;
+    }
+  }
+
+  .card-text-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .trash,
+    .pencil {
+      transition: all 0.2s;
+      color: #000 !important;
+      :hover {
+        transform: scale(1.3);
+      }
+    }
+
+    .icons {
+      display: flex;
+      gap: 10px;
     }
   }
 `;
