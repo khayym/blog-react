@@ -28,7 +28,7 @@ export const LoginContainer = () => {
   const form = useForm({
     initialValues: {
       email: '',
-      password: 'secret'
+      password: ''
     },
 
     validate: {

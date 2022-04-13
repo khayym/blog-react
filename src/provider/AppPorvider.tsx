@@ -4,6 +4,7 @@ import { store } from '../store';
 import Layout from '../shared/components/Layout';
 import { AuthContextProvider } from '../context/AuthContext';
 import { NotificationsProvider } from '@mantine/notifications';
+import { ModalsProvider } from '@mantine/modals';
 
 type Props = {
   children: React.ReactNode;
@@ -12,11 +13,13 @@ type Props = {
 export const AppProvider: React.FunctionComponent<Props> = ({ children }) => {
   return (
     <AuthContextProvider>
-      <NotificationsProvider>
-        <Provider store={store}>
-          <Layout>{children}</Layout>
-        </Provider>
-      </NotificationsProvider>
+      <ModalsProvider>
+        <NotificationsProvider>
+          <Provider store={store}>
+            <Layout>{children}</Layout>
+          </Provider>
+        </NotificationsProvider>
+      </ModalsProvider>
     </AuthContextProvider>
   );
 };
