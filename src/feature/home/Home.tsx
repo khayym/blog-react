@@ -1,15 +1,16 @@
 import { Divider, Grid } from '@mantine/core';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAppSelector } from '../../hooks/redux';
 import CustomCard from '../../shared/components/Card/Normal/';
 import TrendCard from '../../shared/components/Card/Trend';
 import { Feed, HomeStyledContainer, TrendBox } from './Home.Styled';
 
-interface IPosts {
-  posts?: string[];
-}
+export const Home = () => {
+  const postsArray = useAppSelector((state) => state.post.posts);
 
-export const Home = ({ posts }: IPosts) => {
-  console.log(posts);
+  useEffect(() => {
+    // console.log(postsArray);
+  }, [postsArray]);
   return (
     <HomeStyledContainer>
       <TrendBox columns={24} gutter={30}>
@@ -33,7 +34,7 @@ export const Home = ({ posts }: IPosts) => {
       </TrendBox>
       <Divider my="sm" />
       <Feed gutter="xl">
-        {posts?.map((item: any) => (
+        {postsArray?.map((item: any) => (
           <Grid.Col xl={4} lg={4} md={4} sm={4} key={item?.id}>
             <CustomCard data={item} />
           </Grid.Col>

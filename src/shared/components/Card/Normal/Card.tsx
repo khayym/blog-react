@@ -7,13 +7,18 @@ import axios from 'axios';
 import { showNotification } from '@mantine/notifications';
 import { useModals } from '@mantine/modals';
 import { Text } from '@mantine/core';
+import { useAppDispatch } from '../../../../hooks/redux';
+import { fillPosts } from '../../../../store/slices/post/postSlices';
 
 export const CustomCard = ({ data }: any) => {
   const { user }: any = useAuth();
   const modals = useModals();
+  const dispatch = useAppDispatch();
 
   const deleting = async (id: number) => {
     await axios.delete(`https://bloggy-api.herokuapp.com/posts/${id}`);
+    const { data } = await axios('https://bloggy-api.herokuapp.com/posts');
+    dispatch(fillPosts(data));
     showNotification({
       id: 'hello-there',
       disallowClose: true,

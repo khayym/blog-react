@@ -5,7 +5,7 @@ export interface CounterState {
 }
 
 const initialState: CounterState = {
-  posts: [],
+  posts: []
 };
 
 export const postSlices = createSlice({
@@ -13,7 +13,7 @@ export const postSlices = createSlice({
   initialState,
   reducers: {
     fillPosts: (state, action: PayloadAction<any>) => {
-      state.posts = action.payload.reverse();
+      state.posts = action?.payload?.reverse();
     },
     addItemData: (state, action: PayloadAction<any>) => {
       state.posts = [action.payload, ...state.posts];
@@ -22,11 +22,10 @@ export const postSlices = createSlice({
       state.posts = state.posts.filter(
         (item: any) => item.id !== action.payload
       );
-    },
-  },
+    }
+  }
 });
 
-// Action creators are generated for each case reducer function
 export const { fillPosts, deleteItemData, addItemData } = postSlices.actions;
 
 export default postSlices.reducer;

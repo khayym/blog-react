@@ -19,6 +19,6 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    // "prettier/prettier": 2 // Means error
+    // "react/prop-types": "off"
   }
 }
