@@ -9,6 +9,7 @@ interface IPosts {
 }
 
 export const Home = ({ posts }: IPosts) => {
+  console.log(posts);
   return (
     <HomeStyledContainer>
       <TrendBox columns={24} gutter={30}>
@@ -34,19 +35,9 @@ export const Home = ({ posts }: IPosts) => {
       <Feed gutter="xl">
         {posts?.map((item: any) => (
           <Grid.Col xl={4} lg={4} md={4} sm={4} key={item?.id}>
-            <CustomCard />
+            <CustomCard data={item} />
           </Grid.Col>
         ))}
-
-        <Grid.Col xl={4} lg={4} md={4} sm={4}>
-          <CustomCard />
-        </Grid.Col>
-        <Grid.Col xl={4} lg={4} md={4} sm={4}>
-          <CustomCard />
-        </Grid.Col>
-        <Grid.Col xl={4} lg={4} md={4} sm={4}>
-          <CustomCard />
-        </Grid.Col>
       </Feed>
     </HomeStyledContainer>
   );

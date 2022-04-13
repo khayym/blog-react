@@ -36,4 +36,14 @@ export const HeaderContainer = styled(Header)`
     text-transform: uppercase;
     cursor: pointer;
   }
+
+  .login-add {
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 `;
