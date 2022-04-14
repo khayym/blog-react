@@ -35,8 +35,10 @@ export const CustomHeader: React.FC<IHeader> = () => {
         />
 
         <div className="text-icon">
-          <b>Khayym</b>
-          <small>.Blog</small>
+          <Link to="/">
+            <b>Khayym</b>
+            <small>.Blog</small>
+          </Link>
         </div>
         {user ? (
           <div className="login-add">
