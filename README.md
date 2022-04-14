@@ -7,7 +7,7 @@
 ![Screenshot 2021-10-20 at 3 26 18 PM](https://firebasestorage.googleapis.com/v0/b/foody-main.appspot.com/o/Ekran%20%C5%9F%C9%99kli%202022-04-14%20043914.jpg?alt=media&token=31adb5ca-c689-4296-a678-74c07985f8b1)
 
 
-To view a live example, **[click here](blog-react-zeta.vercel.app)**.
+To view a live example, **[click here](https://blog-react-zeta.vercel.app/)**.
 
 I developed this application in the most unique version in 2 days as soon as possible
 
