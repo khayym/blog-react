@@ -2,10 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface CounterState {
   posts: any;
+  updateingData: any;
+  singleData: any;
 }
 
 const initialState: CounterState = {
-  posts: []
+  posts: [],
+  updateingData: [],
+  singleData: []
 };
 
 export const postSlices = createSlice({
@@ -15,17 +19,17 @@ export const postSlices = createSlice({
     fillPosts: (state, action: PayloadAction<any>) => {
       state.posts = action?.payload?.reverse();
     },
-    addItemData: (state, action: PayloadAction<any>) => {
-      state.posts = [action.payload, ...state.posts];
+    updateData: (state, action: PayloadAction<any>) => {
+      // console.log('catdi', action.payload);
+      state.updateingData = action?.payload;
     },
-    deleteItemData: (state, action: PayloadAction<any>) => {
-      state.posts = state.posts.filter(
-        (item: any) => item.id !== action.payload
-      );
+    setPostPageSingleData: (state, action: PayloadAction<any>) => {
+      state.singleData = action?.payload;
     }
   }
 });
 
-export const { fillPosts, deleteItemData, addItemData } = postSlices.actions;
+export const { fillPosts, updateData, setPostPageSingleData } =
+  postSlices.actions;
 
 export default postSlices.reducer;

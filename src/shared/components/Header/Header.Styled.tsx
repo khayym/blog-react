@@ -10,9 +10,22 @@ export const HeaderContainer = styled(Header)`
   align-items: center;
   justify-content: center;
 
+  a {
+    text-decoration: none;
+    all: unset;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
   .text-icon {
     b {
       font-size: 3rem;
+
+      @media (max-width: 500px) {
+        font-size: 1.5rem;
+      }
     }
 
     small {
@@ -20,6 +33,13 @@ export const HeaderContainer = styled(Header)`
       font-weight: 200;
       font-family: 'Lora', serif;
       letter-spacing: -4px;
+
+      @media (max-width: 500px) {
+        font-size: 2rem;
+      }
+      @media (max-width: 380px) {
+        display: none;
+      }
     }
   }
 

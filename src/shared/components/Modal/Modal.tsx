@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ModalContentStyled } from './Modal.Styled';
 import { useForm } from '@mantine/hooks';
 import {
   TextInput,
@@ -13,8 +12,9 @@ import axios from 'axios';
 import { showNotification } from '@mantine/notifications';
 import { useAppDispatch } from '../../../hooks/redux';
 import { fillPosts } from '../../../store/slices/post/postSlices';
+import { ModalContentStyled } from '../../ui/modal/Modal.Styled';
 
-export const ModalContent = () => {
+export const ModalUpdate = ({ updateData }: any) => {
   const category = [
     'Technology',
     'Design',
@@ -24,33 +24,33 @@ export const ModalContent = () => {
   ];
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
-
   const form = useForm({
     initialValues: {
-      title: '',
-      content: '',
-      imgUrl: '',
-      category: '',
-      uniqueId: Date.now()
+      title: updateData.title,
+      content: updateData.content,
+      imgUrl: updateData.imgUrl,
+      category: updateData.category
     }
   });
 
-  const postData = async (values: any) => {
+  const update = async (values: any) => {
     setLoading(true);
-    await axios.post('https://bloggy-api.herokuapp.com/posts', values);
+    await axios.put(
+      `https://bloggy-api.herokuapp.com/posts/${updateData.id}`,
+      values
+    );
     const { data } = await axios('https://bloggy-api.herokuapp.com/posts');
     dispatch(fillPosts(data));
     setLoading(false);
-    form.reset();
     showNotification({
-      title: 'Blog add',
-      message: 'Blog added successfully'
+      title: 'Blog update',
+      message: 'Blog update successfully'
     });
   };
   return (
     <ModalContentStyled>
       <LoadingOverlay visible={loading} />
-      <form onSubmit={form.onSubmit((values) => postData(values))}>
+      <form>
         <TextInput
           required
           label="Title"
@@ -81,8 +81,8 @@ export const ModalContent = () => {
           required
           {...form.getInputProps('category')}
         />
-        <Group mt="md" className="button-group">
-          <Button type="submit">Create Restaurant</Button>
+        <Group mt="md" className="ss-group">
+          <Button onClick={() => update(form.values)}>Update</Button>
         </Group>
       </form>
     </ModalContentStyled>

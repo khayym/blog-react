@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import HomePage from './pages/home';
 import Login from './pages/login';
+import Post from './pages/post';
 import { AppProvider } from './provider/AppPorvider';
 import GlobalStyle from './style/global';
 import { theme } from './style/theme';
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/home" element={<HomePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/post" element={<Post />} />
           </Routes>
         </ThemeProvider>
       </AppProvider>
