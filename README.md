@@ -1,5 +1,5 @@
 
-# "inquire.dev" üçün hazırlanmış Blog veb program
+# Blog web application developed for "inquire.dev"
 
 ## Blog web application with a special admin access with a humorous style and user-friendly interface ❤️.
 ### 
